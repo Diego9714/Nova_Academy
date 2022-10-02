@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Academy</title>
+    <!-- Css -->
+    <link rel="stylesheet" href="Css/menu-nav.css">
+    <link rel="stylesheet" href="Css/login.css">
+    <link rel="stylesheet" href="Css/footer.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <script src="Js/menu.js"></script>
+</head> 
+<body>
+    <!-- Menu de Navegacion -->
+    <header class="header">
+      <div id="logo">
+          <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+      </div>
+      <nav class="nav-menu">
+
+          <input type="checkbox" id="check"  >
+          <label for="check" class="checkbtn"  id="checkbtn1" onclick="mostrar()">
+              <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
+          </label>
+
+          <input type="checkbox" id="check2"  >
+          <label for="check" class="checkbtn"  id="checkbtn2" onclick="ocultar()">
+              <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
+          </label>
+
+          <ul id="cerrar-menu">
+              <li class="element-nav"><a href="/inicio">Inicio</a></li>
+              <li class="element-nav"><a href="/cursos">Cursos</a></li>
+              <li class="element-nav"><a href="/contacto">Contacto</a></li>
+              <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
+              <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+
+          </ul>
+          
+      </nav>
+  </header>
+   
+       <!-- Formulario de Registro -->
+       <section class="container forms">
+         <div id="login" class="form login">
+             <div class="form-content">
+                 <h1 id="tituloLogin">Inicia Sesión</h1>
+                 <form action="#">
+                     <div class="field input-field">
+                         <input type="email" placeholder="Email" class="input">
+                     </div>
+
+                     <div class="field input-field">
+                         <input type="password" placeholder="Password" class="Contraseña">
+                         <i class='bx bx-hide eye-icon'></i>
+                     </div>
+
+                     <div class="form-link">
+                         <a href="#" class="forgot-pass">Olvidaste tu contraseña?</a>
+                     </div>
+
+                     <div class="field button-field">
+                         <button>Iniciar</button>
+                     </div>
+                 </form>
+
+                 <div class="form-link">
+                     <span>Aún no tienes una cuenta? <a href="/registro" class="link signup-link">Registrate</a></span>
+                 </div>
+             </div>
+
+             <div class="line"></div>
+
+             <div class="media-options">
+                 <a href="#" class="field facebook">
+                     <i class='bx bxl-facebook facebook-icon'></i>
+                     <span>Inicia sesión con Facebook</span>
+                 </a>
+             </div>
+
+             <div class="media-options">
+                 <a href="#" class="field google">
+                     <img src="#" alt="" class="google-img">
+                     <span>Inicia sesión con Google</span>
+                 </a>
+             </div>
+
+         </div>
+
+         <!-- Signup Form -->
+
+         <div class="form signup">
+             <div class="form-content">
+                 <header>Signup</header>
+                 <form action="#">
+                     <div class="field input-field">
+                         <input type="email" placeholder="Email" class="input">
+                     </div>
+
+                     <div class="field input-field">
+                         <input type="password" placeholder="Create password" class="password">
+                     </div>
+
+                     <div class="field input-field">
+                         <input type="password" placeholder="Confirm password" class="password">
+                         <i class='bx bx-hide eye-icon'></i>
+                     </div>
+
+                     <div class="field button-field">
+                         <button>Signup</button>
+                     </div>
+                 </form>
+
+                 <div class="form-link">
+                     <span>Already have an account? <a href="/login" class="link login-link">Login</a></span>
+                 </div>
+             </div>
+
+             <div class="line"></div>
+
+             <div class="media-options">
+                 <a href="#" class="field facebook">
+                     <i class='bx bxl-facebook facebook-icon'></i>
+                     <span>Login with Facebook</span>
+                 </a>
+             </div>
+
+             <div class="media-options">
+                 <a href="#" class="field google">
+                     <img src="#" alt="" class="google-img">
+                     <span>Login with Google</span>
+                 </a>
+             </div>
+
+         </div>
+     </section>
+   </main>
+   <!-- Footer -->
+   <footer id="footer" class="pie-pagina">
+    <div class="grupo-1">
+        <div class="boxFooter">
+            <figure>
+                <a href="#">
+                    <img src="Imagenes/undraw_programming_re_kg9v.svg" id="logo2">
+                </a>
+            </figure>
+        </div>
+        <div class="boxFooter">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
+        </div>
+        <div class="boxFooter">
+            <h2>SIGUENOS</h2>
+            <div class="iconos">
+              <div class="border-icon">
+                  <i class='bx bxl-instagram'></i>
+              </div>
+              <div class="border-icon">
+                <i class='bx bxl-whatsapp' ></i>
+              </div>
+              <div class="border-icon">
+                  <i class='bx bxl-facebook-circle' ></i>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2022 <b>Nova Academy</b> - Todos los Derechos Reservados.</small>
+    </div>
+</footer>
+   </body>
+   </html>

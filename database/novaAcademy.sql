@@ -49,3 +49,15 @@ CREATE TABLE IF NOT EXISTS profesores(
     nombre TEXT NOT NULL,
     curso TEXT NOT NULL
 );
+
+
+DROP TABLE IF EXISTS compraCurso;
+CREATE TABLE IF NOT EXISTS compraCurso(
+    id INT UNSIGNED NOT NULL ,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL,
+    cedula VARCHAR (18) NOT NULL,
+
+    FOREIGN KEY(id) REFERENCES registro(id)
+    CONSTRAINT UNIQUE(cedula)
+);

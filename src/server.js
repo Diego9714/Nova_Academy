@@ -53,11 +53,30 @@ app.get(process.env.LOGIN_PATH , (req,res)=>{
 
 app.post("/registro" ,(req,res)=>{
     const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
-    bcrypt.hash(password,10,(err,hash)=>{
-        const sql = `INSERT INTO registro (nombre,apellido,numero_teléfono,correo,contraseña,confirmar_contraseña) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}");`
+    if(password !== confirmPassword){
+        res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
+    }else if(password == confirmPassword){
+        bcrypt.hash(password,10,(err,hash)=>{
+            const sql = `INSERT INTO registro (nombre,apellido,numero_teléfono,correo,contraseña,confirmar_contraseña) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}");`
+            connection.query(sql,(err,data,fields)=>{
+                if(err)throw err
+                res.redirect("/miCuenta")
+            })  
+        })
+    }
+    
+})
+
+app.post("/login",async(req,res)=>{
+    const {email,password} = req.body
+    const sql = `SELECT * FROM iniciarSesion WHERE correo = "${email}";`
+
+    const user = await new Promise((resolve,reject)=>{
         connection.query(sql,(err,data,fields)=>{
-            if(err)throw err
-            res.send("Usuario registrado")
-        })  
+            bcrypt.compare(password,data[0].password,(err,comp)=>{
+                if(err) reject(err)
+                resolve(comp)
+            })
+        })
     })
 })

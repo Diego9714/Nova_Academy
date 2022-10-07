@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Academy</title>
-    <!-- Css -->
-    <link rel="stylesheet" href="Css/menu-nav.css">
-    <link rel="stylesheet" href="Css/cursos.css">
-    <link rel="stylesheet" href="Css/footer.css">
-    <!-- Iconos -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-</head> 
-<body>
+<%- include("head.ejs") %>
+ <body>
     <!-- Menu de Navegacion -->
 <header class="header">
         <div id="logo">
@@ -37,8 +23,8 @@
         </nav>
 </header>
     <!-- Portada Informativa -->
-<div class="portada">
-    <div class="containerPortada">
+<div class="search">
+    <div class="contentSearch">
         <input type="text" placeholder="Buscar" id="buscador">
     </div>
 </div>
@@ -227,38 +213,6 @@
     </ul>
 </main>
 <!-- Footer -->
-<footer id="footer" class="pie-pagina">
-        <div class="grupo-1">
-            <div class="boxFooter">
-                <figure>
-                    <a href="#">
-                        <img src="Imagenes/undraw_programming_re_kg9v.svg" id="logo2">
-                    </a>
-                </figure>
-            </div>
-            <div class="boxFooter">
-                <h2>SOBRE NOSOTROS</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
-            </div>
-            <div class="boxFooter">
-                <h2>SIGUENOS</h2>
-                <div class="iconos">
-                  <div class="border-icon">
-                      <i class='bx bxl-instagram'></i>
-                  </div>
-                  <div class="border-icon">
-                    <i class='bx bxl-whatsapp' ></i>
-                  </div>
-                  <div class="border-icon">
-                      <i class='bx bxl-facebook-circle' ></i>
-                  </div>
-              </div>
-            </div>
-        </div>
-        <div class="grupo-2">
-            <small>&copy; 2022 <b>Nova Academy</b> - Todos los Derechos Reservados.</small>
-        </div>
-</footer>
+<%- include("footer.ejs") %>
 </body>
 </html>

@@ -8,7 +8,7 @@
 body{
   background-image: url(../Imagenes/portadalogin.jpg);
 }
-.container{
+.containerRegistro{
   margin: 10% auto;
   max-width: 700px;
   width: 100%;
@@ -17,21 +17,21 @@ body{
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-.container .title{
+.containerRegistro .title{
   font-size: 25px;
   font-weight: 500;
 }
-.content form .user-details{
+.contentRegistro form .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-form .user-details .input-box{
+.contentRegistro form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
-form .input-box span.details{
+.contentRegistro form .input-box span.details{
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
@@ -52,11 +52,11 @@ form .input-box span.details{
   background-color: #42d17e;
 }
 
- form .button{
+ .contentRegistro form .button{
    height: 45px;
    margin: 35px 0
  }
- form .button input{
+ .contentRegistro form .button input{
    height: 100%;
    width: 100%;
    border-radius: 5px;
@@ -69,8 +69,7 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background-color: #42d17e;
  }
- form .button input:hover{
-  /* transform: scale(0.99); */
+ .contentRegistro form .button input:hover{
   background:transparent;
   border:2px solid #4ad295;
   color:#42d17e;
@@ -79,14 +78,14 @@ form .input-box span.details{
  .container{
   max-width: 100%;
 }
-form .user-details .input-box{
+.contentRegistro form .user-details .input-box{
     margin-bottom: 15px;
     width: 100%;
   }
-  form .category{
+  .contentRegistro form .category{
     width: 100%;
   }
-  .content form .user-details{
+  .contentRegistro form .user-details{
     max-height: 300px;
     overflow-y: scroll;
   }
@@ -95,7 +94,7 @@ form .user-details .input-box{
   }
   }
   @media(max-width: 459px){
-  .container .content .category{
+  .containerRegistro .contentRegistro .category{
     flex-direction: column;
   }
 }

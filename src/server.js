@@ -60,23 +60,48 @@ app.post("/registro" ,(req,res)=>{
             const sql = `INSERT INTO registro (nombre,apellido,numero_teléfono,correo,contraseña,confirmar_contraseña) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}");`
             connection.query(sql,(err,data,fields)=>{
                 if(err)throw err
-                res.redirect("/miCuenta")
+                res.redirect("/login")
             })  
         })
     }
     
 })
 
-app.post("/login",async(req,res)=>{
+app.post("/login",(req,res)=>{
     const {email,password} = req.body
-    const sql = `SELECT * FROM iniciarSesion WHERE correo = "${email}";`
+    const sql = `SELECT * FROM registro WHERE correo = "${email}";`
 
-    const user = await new Promise((resolve,reject)=>{
-        connection.query(sql,(err,data,fields)=>{
-            bcrypt.compare(password,data[0].password,(err,comp)=>{
-                if(err) reject(err)
-                resolve(comp)
-            })
-        })
+    connection.query(sql,(err,data,fields)=>{
+        if(err)throw err
+        console.log(data)
     })
+
+    // const user = await new Promise((resolve,reject)=>{
+    //     connection.query(sql,(err,data,fields)=>{
+    //         bcrypt.compare(password,data[0].password,(err,comp)=>{
+    //             if(err) reject(err)
+    //             resolve(comp)
+    //         })
+    //     })
+    // })
+
+    // if(user){
+    //     const payload = {
+    //         correo : email,
+    //         clave  : password,
+    //         niv_acc : "Usuario"
+    //     }
+    //     jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
+    //         if(err) throw err
+
+    //         const sql = `INSERT INTO login (correo,token) values ("${email}","${token}");`
+
+    //         connection.query(sql,(err)=>{
+    //             if(err)throw err
+    //             res.send("Token registrado en la base de datos")
+    //         })
+    //     })
+    // }else{
+    //     res.send("Hay un problema")
+    // }
 })

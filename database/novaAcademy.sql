@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS registro(
     nombre TEXT NOT NULL,
     apellido TEXT NOT NULL,
     numero_teléfono VARCHAR(30) NOT NULL,
-    correo VARCHAR(100) NOT NULL,
-    contraseña VARCHAR(30) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    contraseña VARCHAR(100) NOT NULL,
     confirmar_contraseña VARCHAR(100) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- Llaves
@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS iniciarSesion;
 CREATE TABLE IF NOT EXISTS iniciarSesion(
     id INT UNSIGNED NOT NULL,
     correo VARCHAR(100) NOT NULL,
-    contraseña VARCHAR(100) NOT NULL,
+    token VARCHAR(100) NOT NULL,
     fecha_inicioSesión TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY(id) REFERENCES registro(id)
@@ -51,13 +51,13 @@ CREATE TABLE IF NOT EXISTS profesores(
 );
 
 
-DROP TABLE IF EXISTS compraCurso;
-CREATE TABLE IF NOT EXISTS compraCurso(
-    id INT UNSIGNED NOT NULL ,
-    nombre TEXT NOT NULL,
-    apellido TEXT NOT NULL,
-    cedula VARCHAR (18) NOT NULL,
+-- DROP TABLE IF EXISTS compraCurso;
+-- CREATE TABLE IF NOT EXISTS compraCurso(
+--     id INT UNSIGNED NOT NULL ,
+--     nombre TEXT NOT NULL,
+--     apellido TEXT NOT NULL,
+--     cedula VARCHAR (18) NOT NULL,
 
-    FOREIGN KEY(id) REFERENCES registro(id)
-    CONSTRAINT UNIQUE(cedula)
-);
+--     FOREIGN KEY(id) REFERENCES registro(id)
+--     CONSTRAINT UNIQUE(cedula)
+-- );

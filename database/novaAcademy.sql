@@ -7,24 +7,21 @@ CREATE TABLE IF NOT EXISTS registro(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre TEXT NOT NULL,
     apellido TEXT NOT NULL,
-    numero_teléfono VARCHAR(30) NOT NULL,
+    numero_telefono VARCHAR(30) NOT NULL,
     correo VARCHAR(50) NOT NULL,
-    contraseña VARCHAR(100) NOT NULL,
-    confirmar_contraseña VARCHAR(100) NOT NULL,
+    clave VARCHAR(100) NOT NULL,
+    confirmar_clave VARCHAR(100) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- Llaves
     PRIMARY KEY (id),
-    CONSTRAINT UNIQUE(correo)
+    CONSTRAINT UNIQUE (correo)
 );
 
 DROP TABLE IF EXISTS iniciarSesion;
 CREATE TABLE IF NOT EXISTS iniciarSesion(
-    id INT UNSIGNED NOT NULL,
     correo VARCHAR(100) NOT NULL,
     token VARCHAR(100) NOT NULL,
-    fecha_inicioSesión TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    FOREIGN KEY(id) REFERENCES registro(id)
+    fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE IF EXISTS cursos;

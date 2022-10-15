@@ -57,7 +57,7 @@ app.post("/registro" ,(req,res)=>{
         res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
     }else if(password == confirmPassword){
         bcrypt.hash(password,10,(err,hash)=>{
-            const sql = `INSERT INTO registro (nombre,apellido,numero_teléfono,correo,contraseña,confirmar_contraseña) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}");`
+            const sql = `INSERT INTO registro (nombre,apellido,numero_telefono,correo,clave,confirmar_clave) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}");`
             connection.query(sql,(err,data,fields)=>{
                 if(err)throw err
                 res.redirect("/login")
@@ -67,41 +67,36 @@ app.post("/registro" ,(req,res)=>{
     
 })
 
-app.post("/login",(req,res)=>{
+app.post("/login",async(req,res)=>{
     const {email,password} = req.body
     const sql = `SELECT * FROM registro WHERE correo = "${email}";`
 
-    connection.query(sql,(err,data,fields)=>{
-        if(err)throw err
-        console.log(data)
+    const user = await new Promise((resolve,reject)=>{
+        connection.query(sql,(err,data,fields)=>{
+            bcrypt.compare(password,data[0].clave,(err,comp)=>{
+                if(err) reject(err)
+                resolve(comp)
+            })
+        })
     })
 
-    // const user = await new Promise((resolve,reject)=>{
-    //     connection.query(sql,(err,data,fields)=>{
-    //         bcrypt.compare(password,data[0].password,(err,comp)=>{
-    //             if(err) reject(err)
-    //             resolve(comp)
-    //         })
-    //     })
-    // })
+    if(user){
+        const payload = {
+            correo : email,
+            clave  : password,
+            niv_acc : "Usuario"
+        }
+        jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
+            if(err) throw err
 
-    // if(user){
-    //     const payload = {
-    //         correo : email,
-    //         clave  : password,
-    //         niv_acc : "Usuario"
-    //     }
-    //     jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
-    //         if(err) throw err
+            const sql = `INSERT INTO iniciarSesion (correo,token) values ("${email}","${token}");`
 
-    //         const sql = `INSERT INTO login (correo,token) values ("${email}","${token}");`
-
-    //         connection.query(sql,(err)=>{
-    //             if(err)throw err
-    //             res.send("Token registrado en la base de datos")
-    //         })
-    //     })
-    // }else{
-    //     res.send("Hay un problema")
-    // }
+            connection.query(sql,(err)=>{
+                if(err)throw err
+                res.send("Token registrado en la base de datos")
+            })
+        })
+    }else{
+        res.send("Hay un problema")
+    }
 })

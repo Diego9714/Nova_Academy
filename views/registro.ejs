@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Academy</title>
-    <!-- Css -->
-    <link rel="stylesheet" href="Css/menu-nav.css">
-    <link rel="stylesheet" href="Css/registro.css">
-    <link rel="stylesheet" href="Css/footer.css">
-
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-</head> 
-<body>
+<%- include("head.ejs") %> 
+<body id="bodyRegistro">
     <!-- Menu de Navegacion -->
     <header class="header">
       <div id="logo">
@@ -38,9 +23,9 @@
       </nav>
   </header>
   <!-- Registro -->
-  <div class="container">
+  <div class="containerRegistro">
    <div class="title">Registro</div>
-   <div class="content">
+   <div class="contentRegistro">
      <form method="post" action="/registro" >
        <div class="user-details">
          <div class="input-box">
@@ -53,60 +38,32 @@
          </div>
          <div class="input-box">
            <span class="details">Email</span>
-           <input type="text" name="email" placeholder="Escribe tu correo" required>
+           <input type="email" name="email" id="emailReg" placeholder="Escribe tu correo" required>
          </div>
          <div class="input-box">
            <span class="details">Número de teléfono</span>
-           <input type="text" name="telefono" placeholder="Escribe tu número de teléfono" required>
+           <input type="tel" name="telefono" placeholder="Escribe tu número de teléfono" required>
          </div>
          <div class="input-box">
            <span class="details">Contraseña</span>
-           <input type="password" name="password" placeholder="Escribe tu contraseña" required>
+           <input type="password" name="password" id="passReg" placeholder="Escribe tu contraseña" required>
          </div>
          <div class="input-box">
            <span class="details">Confirmar Contraseña</span>
-           <input type="password" name="confirmPassword" placeholder="Confirma tu contraseña" required>
+           <input type="password" name="confirmPassword" id="confirmpassReg" placeholder="Confirma tu contraseña" required>
          </div>
        </div>
        <div class="button">
-         <input type="submit" value="Registrate">
+         <input type="submit" value="Registrate" id="btnRegister">
        </div>
      </form>
    </div>
  </div>
 <!-- Footer -->
-<footer id="footer" class="pie-pagina">
-  <div class="grupo-1">
-      <div class="boxFooter">
-          <figure>
-              <a href="#">
-                  <img src="Imagenes/undraw_programming_re_kg9v.svg" id="logo2">
-              </a>
-          </figure>
-      </div>
-      <div class="boxFooter">
-          <h2>SOBRE NOSOTROS</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?</p>
-      </div>
-      <div class="boxFooter">
-          <h2>SIGUENOS</h2>
-          <div class="iconos">
-            <div class="border-icon">
-                <i class='bx bxl-instagram'></i>
-            </div>
-            <div class="border-icon">
-              <i class='bx bxl-whatsapp' ></i>
-            </div>
-            <div class="border-icon">
-                <i class='bx bxl-facebook-circle' ></i>
-            </div>
-        </div>
-      </div>
-  </div>
-  <div class="grupo-2">
-      <small>&copy; 2022 <b>Nova Academy</b> - Todos los Derechos Reservados.</small>
-  </div>
-</footer>
+<%- include("footer.ejs") %>
 </body>
+<!-- Js -->
+<!-- <script src="Js/registro.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
 </html>

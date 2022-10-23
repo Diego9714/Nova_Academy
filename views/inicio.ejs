@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Academy</title>
-    <!-- Css -->
-    <link rel="stylesheet" href="Css/menu-nav.css">
-    <link rel="stylesheet" href="Css/inicio.css">
-    <link rel="stylesheet" href="Css/footer.css">
-    <!-- Icons -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-</head> 
+<%- include("head.ejs") %>
 <body>
     <!-- Menu de Navegacion -->
 <header class="header">
@@ -67,7 +54,7 @@
     </div>
     <!-- Cursos mas populares -->
     <div id="contentCursos">
-        <!-- <h1 id="tituloContentCursos">Conoce nuestros cursos más populares:</h1> -->
+        <h1 id="tituloContentCursos">Conoce algunos de nuestros cursos más populares:</h1>
         <ul class="cursos">
             <li class="curso">
                 <div class="card">
@@ -120,7 +107,7 @@
         </ul>
     </div>
     <!-- Informacion -->
-    <section>
+    <section id="InformacionInicio">
         <figcaption>
             <img src="Imagenes/slider1.jpg" class="imagen">
         </figcaption>
@@ -140,38 +127,10 @@
         </article>
     </section>
 </main>
+
       <!-- Footer -->
-<footer id="footer" class="pie-pagina">
-    <div class="grupo-1">
-        <div class="boxFooter">
-            <figure>
-                <a href="#">
-                    <img src="Imagenes/undraw_programming_re_kg9v.svg" id="logo2">
-                </a>
-            </figure>
-        </div>
-        <div class="boxFooter">
-            <h2>SOBRE NOSOTROS</h2>
-            <p>Somos una Academia que impartimos óptimas enseñanzas en el aprendizaje de lenguajes de programación tales como Javascript, Phyton, NodeJs, etc. Garantizando un aprendizaje de calidad a toda la comunidad tanto nacional como internacional.</p>
-        </div>
-        <div class="boxFooter">
-            <h2>SIGUENOS</h2>
-            <div class="iconos">
-                <div class="border-icon">
-                    <i class='bx bxl-instagram'></i>
-                </div>
-                <div class="border-icon">
-                    <i class='bx bxl-whatsapp' ></i>
-                </div>
-                <div class="border-icon">
-                    <i class='bx bxl-facebook-circle' ></i>
-                </div>
-              </div>
-            </div>
-        </div>
-    <div class="grupo-2">
-        <small>&copy; 2022 <b>Nova Academy</b> - Todos los Derechos Reservados.</small>
-    </div>
-</footer>
+      <%- include("footer.ejs") %>
 </body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
 </html>

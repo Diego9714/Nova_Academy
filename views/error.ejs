@@ -1,0 +1,35 @@
+<%- include("head.ejs") %>
+<body id="body-error">
+        <!-- Menu de Navegacion -->
+<header class="header">
+    <div id="logo">
+        <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+    </div>
+    <nav class="nav-menu">
+
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
+        </label>
+
+        <ul>
+            <li class="element-nav"><a href="/inicio">Inicio</a></li>
+            <li class="element-nav"><a href="/cursos">Cursos</a></li>
+            <li class="element-nav"><a href="/contacto">Contacto</a></li>
+            <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
+            <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+        </ul>
+        
+    </nav>
+</header>
+    <div class="wrapper">
+        <h1>Tu Cuenta Ya Expiro</h1>
+        <p>Por favor dirigete a nuestro registro y vuelve a crear una nueva cuenta para poder seguir accediendo a nuestros servicios.</p>
+        <div class="buttons">
+            <button class="btn btn1"><a href="/login">Regresar</a></button>
+            <button class="btn btn2"><a href="/registro">Registro</a></button>
+        </div>
+    </div>
+</body>
+<%- include("footer.ejs") %>
+</html>

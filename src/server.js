@@ -46,6 +46,17 @@ io.on('connection',(socket)=>{
 })
 
 
+app.get(process.env.GUEST_PATH , (req,res)=>{
+    res.render("inicioGuest.ejs")
+
+    req.session.usuario = "Diego Cabrera"
+    req.session.rol     = "Admin"
+    req.session.visitas = req.session.visitas ? ++req.session.visitas : 1
+
+    console.log(req.session)
+    console.log(`El usuario ${req.session.usuario}  con el rol ${req.session.rol}  ha visitado esta página ${req.session.visitas}  veces`)
+})
+
 app.get(process.env.HOME_PATH , (req,res)=>{
     res.render("inicio.ejs")
 
@@ -77,6 +88,25 @@ app.get(process.env.LOGIN_PATH , (req,res)=>{
     res.render("login.ejs")
 })
 
+
+
+app.get(process.env.ERROR_PATH , (req,res)=>{
+    res.render("error.ejs")
+})
+
+app.get(process.env.ERROR_ACCESS_PATH , (req,res)=>{
+    res.render("errorAccess.ejs")
+})
+
+
+app.get(process.env.ERROR_404_PATH , (req,res)=>{
+    res.render("error404.ejs")
+})
+
+app.get("/save" , (req,res)=>{
+    res.render("/save")
+})
+
 app.post("/registro" , async(req,res)=>{
     const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
     if(password !== confirmPassword){
@@ -88,6 +118,7 @@ app.post("/registro" , async(req,res)=>{
     else if(password == confirmPassword){
 
         const payload = {
+            nombre : nombre,
             correo : email,
             clave  : password,
             niv_acc : "Usuario"
@@ -121,19 +152,185 @@ app.post("/login",async(req,res)=>{
         })
     })
 
+
     if(user){
+        const ingresar = `INSERT INTO iniciarSesion (correo) values ("${email}");`
+        connection.query(ingresar,(err,data,fields)=>{
+            if(err)throw err
+        })
+
         connection.query(sql,(err,data,fields)=>{
             jwt.verify(data[0].token, process.env.KEY , (err,decoded)=>{
-                if(err)throw err
-                res.send(decoded)
+                if(err){
+                    res.redirect("/error")
+                }
+                res.redirect("/verify")
             })    
         })
         
-    }else{
-        res.send("Hay un problema")
     }
 })
 
-app.get("/miCuenta",(req,res)=>{
-    const sql = "SELECT id "
+app.get("/verify",async(req,res)=>{
+    const sql = `SELECT * FROM iniciarSesion;`
+    connection.query(sql,(err,data,fields)=>{
+        jwt.verify(data[0].token, process.env.KEY , (err,decoded)=>{
+            if(decoded.acceso = "Administrador"){
+                res.redirect("/error")
+            }
+            res.redirect("/verify")
+        })    
+    })
+})
+
+app.get("/miCuenta",async(req,res)=>{
+    const sql = `SELECT * FROM registro;`
+// Inicio de sesion
+    var user = await new Promise((resolve, reject) => {
+		connection.query(sql, (err,data,fields) => {
+		if(err) return reject(err)
+		return resolve(data)
+		})
+	})
+	res.render('miCuenta', {user})
+})
+
+// Listado de Usuarios, login , estudiantes , Administradores, Cursos y Mensaje
+
+app.get("/admin",async(req,res)=>{
+    const sql = `SELECT * FROM registro;`
+// // Registro de usuarios
+	var user = await new Promise((resolve, reject) => {
+		connection.query(sql, (err,data,fields) => {
+		if(err) return reject(err)
+		return resolve(data)
+		})
+	})
+	res.render('admin', {user})
+})
+
+app.get("/adminLogin",async(req,res)=>{
+    const sql = `SELECT * FROM iniciarSesion;`
+// Inicio de sesion
+    var login = await new Promise((resolve, reject) => {
+		connection.query(sql, (err,data,fields) => {
+		if(err) return reject(err)
+		return resolve(data)
+		})
+	})
+	res.render('admLogin', {login})
+})
+
+app.get("/adminMensaje",async(req,res)=>{
+    const sql = `SELECT * FROM mensaje;`
+// Mensajes de usuarios
+    var mensaje = await new Promise((resolve, reject) => {
+		connection.query(sql, (err,data,fields) => {
+		if(err) return reject(err)
+		return resolve(data)
+		})
+	})
+	res.render('adminMsj', {mensaje})
+})
+
+app.post("/contacto",async(req,res)=>{
+    const {fullname,email,phone,asunto,message} = req.body
+    const sql = `INSERT INTO mensaje (nombre_completo,numero_telefono,correo,asunto,mensaje) values ("${fullname}","${phone}","${email}","${asunto}","${message}");`
+    connection.query(sql,(err,data,fields)=>{
+        if(err)throw err
+        
+        res.redirect("/inicio")
+    })
+
+    })
+
+app.get('/edit/:id', async (req,res) => {
+	const{ id } = req.params
+	sql = `SELECT * FROM registro WHERE id='${id}';`
+	var userReg = await new Promise((resolve, reject) => {
+		connection.query(sql, (err,data,fields) => {
+		if(err) return reject(err)
+		return resolve(data)
+		})
+	})
+	res.render('edit', {user:userReg[0]})
+})
+
+app.get('/create', (req,res) => {	
+	res.render('create')
+})
+
+
+app.post('/save', (req,res) => {
+    const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
+    if(password !== confirmPassword){
+        res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
+    }
+    if(password.length<10){
+        res.send("La contraseña es muy corta, debe ser mayor a 10 digitos")
+    }
+    else if(password == confirmPassword){
+
+        const payload = {
+            nombre : nombre,
+            correo : email,
+            clave  : password,
+            niv_acc : "Usuario"
+        }
+        jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
+            if(err) throw err
+
+            bcrypt.hash(password,10,(err,hash)=>{
+                const sql = `INSERT INTO registro (nombre,apellido,numero_telefono,correo,clave,confirmar_clave, token) values ("${nombre}","${apellido}","${telefono}","${email}","${hash}","${confirmPassword}","${token}");`
+                connection.query(sql,(err,data,fields)=>{
+                    if(err)throw err
+                    
+                    res.redirect("/admin")
+                }) 
+                
+            })
+        })            
+    }
+})
+
+app.post('/update', (req,res) => {
+
+    const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
+    if(password !== confirmPassword){
+        res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
+    }
+    if(password.length<10){
+        res.send("La contraseña es muy corta, debe ser mayor a 10 digitos")
+    }
+    else if(password == confirmPassword){
+
+        const payload = {
+            nombre : nombre,
+            correo : email,
+            clave  : password,
+            niv_acc : "Usuario"
+        }
+        jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
+            if(err) throw err
+
+            bcrypt.hash(password,10,(err,hash)=>{
+                const sql = `UPDATE registro SET nombre="${nombre}" ,apellido="${apellido}",numero_telefono="${telefono}" , correo="${email}" ,clave="${hash}",confirmar_clave="${confirmPassword}", token="${token}" ;`
+                connection.query(sql,(err,data,fields)=>{
+                    if(err)throw err
+                    
+                    res.redirect("/admin")
+                }) 
+                
+            })
+        })            
+    }
+})
+
+app.get('/delete/:id', (req,res) => {
+	const{ id } = req.params
+	sql = `DELETE FROM registro WHERE id='${id}';`
+	connection.query(sql, (err,data,fields) => {
+		if (err) throw err
+	  res.redirect('/admin')
+	})
 })

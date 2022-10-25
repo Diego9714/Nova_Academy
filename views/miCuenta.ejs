@@ -22,7 +22,12 @@
     <main>
         <div class="portadaPerfil">
             <div class="contentCuenta">
-                <h1 id="nombreUser">Diego Cabrera</h1>
+
+                <% user.forEach((info) => { %> 
+                        <h1 id="nombreUser"><%= info.nombre %></h1>
+                    <% }) %> 
+
+                
                 <button id="btnEditarDatos1" onclick="mostrarForm()" class="btnPerfil">Editar Perfil</button>
                 <button id="btnEditarDatos2" onclick="ocultarForm()" class="btnPerfil">Editar Perfil</button>
             </div>
@@ -58,6 +63,19 @@
                 <button type="submit" class="formulario__btn">Guardar</button>
             </form>
         </section>
+
+        <div id="contentProductos">
+            <div class="box" href="/cursos">
+                    <img class="icon" src="Imagenes/telefono-inteligente.png">
+                <h2 class="title-post">Desde Casa</h2>
+                <p class="description">Disfruta cualquiera de nuestros cursos online. Puedes presionar aqui para acceder a nuestros cursos.</p>
+            </div>
+            <div class="box" href="/contacto">
+                    <img class="icon" src="Imagenes/casa.png">
+                <h2 class="title-post">Soporte 24h</h2>
+                <p class="description">Si necesitas ayuda o quieres reportar algun inconveniente por favor pulsa este cuadro.</p>
+            </div>
+        </div>
     </main>
     <!-- footer -->
     <%- include("footer.ejs") %>

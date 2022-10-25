@@ -1,0 +1,403 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+#bodyRegistro{
+  background-image: url(../Imagenes/portadalogin.jpg);
+}
+.containerRegistro{
+  margin: 10% auto;
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.containerRegistro .title{
+  font-size: 25px;
+  font-weight: 500;
+}
+.contentRegistro form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+.contentRegistro form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+.contentRegistro form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  background-color: #42d17e;
+}
+
+ .contentRegistro form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ .contentRegistro form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background-color: #42d17e;
+ }
+ .contentRegistro form .button input:hover{
+  background:transparent;
+  border:2px solid #4ad295;
+  color:#42d17e;
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+.contentRegistro form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .contentRegistro form .category{
+    width: 100%;
+  }
+  .contentRegistro form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .containerRegistro .contentRegistro .category{
+    flex-direction: column;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Poppins&family=Roboto:wght@500&display=swap');
+
+.pie-pagina{
+    width: 100%;
+    display:inline-block;
+    background-color: #181818;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+
+}
+.pie-pagina .grupo-1 .boxFooter figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxFooter h2 p{
+    text-align: justify;
+}
+
+.boxFooter p{
+    font-family: 'Roboto', sans-serif;
+}
+.pie-pagina .grupo-1 .boxFooter figure img{
+    width: 100px;
+    border-radius: 50%;
+}
+
+#logo2:hover{
+    transition:3s;
+    box-shadow: 5px 5px 10px #4ad295;
+}
+
+.pie-pagina .grupo-1 .boxFooter h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-pagina .grupo-1 .boxFooter p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+.iconos{
+    width:200px;
+    display:flex;
+    justify-content:space-around;
+    margin:auto;
+}
+
+.border-icon{
+    height: 20px;
+    width:20px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    padding:10%;
+    border: solid thin white;
+    border-radius: 50%;
+    font-size:2rem;
+    transition: all .3s ease-in;
+    color:white;
+}
+
+.border-icon:hover{
+    background-color:#4ad295;
+    cursor:pointer;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: aqua;
+}
+.pie-pagina .grupo-2{
+    background-color: rgb(66, 66, 66);
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style:none;
+}
+
+body{
+    background-color: #ffffff;
+}
+.element-nav , .element-nav a{
+    font-family: 'Roboto', sans-serif;
+    color:#fff;
+}
+#logo img{
+    width:80px;
+    border-radius: 50%;
+}
+#logo img:hover{
+    transition:3s;
+    box-shadow: 5px 5px 10px #4ad295;
+}
+header{
+  background-color: #111;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 2rem;
+}
+.nav-menu ul{
+    display:flex;
+    align-items: center;
+}
+.element-nav{
+    margin-right:1.5rem;
+}
+.nav-menu a:hover{
+    color:#4ad295;
+    transition:.5s;
+}
+
+#iniSesion{
+    background-color:#4ad295;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+}
+
+#iniSesion:hover{
+    background:transparent;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+    transition:1.3s;
+}
+
+#myaccount{
+    background-color:#4ad295;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+}
+
+#myaccount:hover{
+    background:transparent;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+    transition:1.3s;
+}
+.menu-icon img{
+    color:white;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    transition:.5s;
+}
+.menu-icon, #check{
+    display: none;
+}
+
+#check2,#checkbtn2{
+    display:none;
+}
+@media (max-width:768px){
+    .checkbtn{
+        display: block;
+    }
+    .menu-icon{
+        display: block;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+
+    }
+    .nav-menu ul {
+        display: block;
+        position: fixed;
+        top:70px;
+        left:-100%;
+        background: #222;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+    }
+    .element-nav, #iniSesion{
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .element-nav a:hover{
+        color:#4ad295;
+        transition:1.3s;
+    }
+
+    #myaccount,#iniSesion{
+        padding:2rem;
+        background-color: transparent;
+        border:0;
+    }
+
+    #check:checked ~ ul{
+        left: 0;
+        transition: all 1s;
+    }
+}
+</style>
+
+
+<body id="bodyRegistro">
+    <!-- Menu de Navegacion -->
+    <header class="header">
+      <div id="logo">
+          <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+      </div>
+      <nav class="nav-menu">
+
+          <input type="checkbox" id="check">
+          <label for="check" class="checkbtn">
+              <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
+          </label>
+
+          <ul>
+              <li class="element-nav"><a href="/inicio">Inicio</a></li>
+              <li class="element-nav"><a href="/cursos">Cursos</a></li>
+              <li class="element-nav"><a href="/contacto">Contacto</a></li>
+              <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
+              <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+          </ul>
+          
+      </nav>
+  </header>
+  <!-- Registro -->
+  <div class="containerRegistro">
+   <div class="title">Editar Datos</div>
+   <div class="contentRegistro">
+     <form method="post" action="/update" >
+       <div class="user-details">
+         <div class="input-box">
+           <span class="details">Nombre</span>
+           <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Apellido</span>
+           <input type="text" name="apellido" placeholder="Escribe tu apellido" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Email</span>
+           <input type="email" name="email" id="emailReg" placeholder="Escribe tu correo" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Número de teléfono</span>
+           <input type="tel" name="telefono" placeholder="Escribe tu número de teléfono" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Contraseña</span>
+           <input type="password" name="password" id="passReg" placeholder="Escribe tu contraseña" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Confirmar Contraseña</span>
+           <input type="password" name="confirmPassword" id="confirmpassReg" placeholder="Confirma tu contraseña" required>
+         </div>
+       </div>
+       <div class="button">
+         <input type="submit" value="Registrate" id="btnRegister">
+       </div>
+     </form>
+   </div>
+ </div>
+<!-- Footer -->
+<%- include("footer.ejs") %>
+</body>
+<!-- Js -->
+<!-- <script src="Js/registro.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
+</html>

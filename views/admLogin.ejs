@@ -58,43 +58,27 @@
                 <button type="submit" class="formulario__btn">Guardar</button>
             </form>
         </section>
-
         
-        <!-- Tabla de Registro usuarios -->
-         <div class="container_crud">
-            <h1>Control de usuarios registrados</h1>
+        <!-- Tabla de usuarios logueados -->
+        <div class="container_crud">
+            <h1>Control de usuarios logueados</h1>
             <table class="content-table">
                 <thead>
                     <th scope="col">Id</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
 					<th scope="col">Correo</th>
 					<th scope="col">Fecha</th>
-                    <th scope="col">Acciones</th>
                 </thead>
                 <tbody>
-						<% user.forEach((users) => { %> 
+						<% login.forEach((usuLogin) => { %> 
 						<tr class="text-white">
-							<td><%= users.id %> </td>
-							<td> <%= users.nombre %></td>
-                            <td> <%= users.apellido %></td>
-							<td><%= users.correo %></td>
-							<td><%= users.fecha_registro %></td>
-							<td>
-								<a href="/edit/<%= users.id %>" style="text-decoration:none"><i class='bx bxs-edit bx-xs'></i></a>
-								<a href="/delete/<%= users.id %>" style="text-decoration:none"><i class='bx bx-trash bx-xs'></i></a>
-							</td>
+							<td><%= usuLogin.id %> </td>
+							<td><%= usuLogin.correo %></td>
+							<td><%= usuLogin.fecha_ingreso %></td>
 						</tr>
 						<% }) %> 
-						<tr>
-							<td>
-								<button type="submit" class="btn-us"><a href="/create" style="text-decoration:none">Nuevo</a></button>
-							</td>
-						</tr>
 					</tbody>
             </table>
-        </div> 
-
+        </div>
 
  
         </div>

@@ -48,24 +48,11 @@ io.on('connection',(socket)=>{
 
 app.get(process.env.GUEST_PATH , (req,res)=>{
     res.render("inicioGuest.ejs")
-
-    req.session.usuario = "Diego Cabrera"
-    req.session.rol     = "Admin"
-    req.session.visitas = req.session.visitas ? ++req.session.visitas : 1
-
-    console.log(req.session)
-    console.log(`El usuario ${req.session.usuario}  con el rol ${req.session.rol}  ha visitado esta página ${req.session.visitas}  veces`)
 })
 
 app.get(process.env.HOME_PATH , (req,res)=>{
     res.render("inicio.ejs")
 
-    req.session.usuario = "Diego Cabrera"
-    req.session.rol     = "Admin"
-    req.session.visitas = req.session.visitas ? ++req.session.visitas : 1
-
-    console.log(req.session)
-    console.log(`El usuario ${req.session.usuario}  con el rol ${req.session.rol}  ha visitado esta página ${req.session.visitas}  veces`)
 })
 
 app.get(process.env.COURSES_PATH , (req,res)=>{
@@ -87,8 +74,6 @@ app.get(process.env.REGISTER_PATH , (req,res)=>{
 app.get(process.env.LOGIN_PATH , (req,res)=>{
     res.render("login.ejs")
 })
-
-
 
 app.get(process.env.ERROR_PATH , (req,res)=>{
     res.render("error.ejs")
@@ -154,38 +139,35 @@ app.post("/login",async(req,res)=>{
 
 
     if(user){
-        const ingresar = `INSERT INTO iniciarSesion (correo) values ("${email}");`
-        connection.query(ingresar,(err,data,fields)=>{
-            if(err)throw err
-        })
-
         connection.query(sql,(err,data,fields)=>{
-            jwt.verify(data[0].token, process.env.KEY , (err,decoded)=>{
-                if(err){
-                    res.redirect("/error")
-                }
-                res.redirect("/verify")
-            })    
-        })
-        
+            const payload = {
+                nombre : data[0].nombre,
+                correo : email,
+                niv_acc : "Usuario"
+            }
+            jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
+                if(err) throw err
+    
+                const ingresar = `INSERT INTO iniciarSesion (correo,token) values ("${email}","${token}");`
+                    connection.query(ingresar,(err,data,fields)=>{
+                        if(err)throw err   
+                        res.redirect("/verify")                 
+                })
+            })
+        })    
     }
 })
 
 app.get("/verify",async(req,res)=>{
-    const sql = `SELECT * FROM iniciarSesion;`
-    connection.query(sql,(err,data,fields)=>{
-        jwt.verify(data[0].token, process.env.KEY , (err,decoded)=>{
-            if(decoded.acceso = "Administrador"){
-                res.redirect("/error")
-            }
-            res.redirect("/verify")
-        })    
+    const sql = `SELECT * FROM login;`
+    await connection.query(sql,(err,data,fields)=>{
+        res.send(data[0].token)    
     })
 })
 
 app.get("/miCuenta",async(req,res)=>{
     const sql = `SELECT * FROM registro;`
-// Inicio de sesion
+
     var user = await new Promise((resolve, reject) => {
 		connection.query(sql, (err,data,fields) => {
 		if(err) return reject(err)
@@ -199,7 +181,7 @@ app.get("/miCuenta",async(req,res)=>{
 
 app.get("/admin",async(req,res)=>{
     const sql = `SELECT * FROM registro;`
-// // Registro de usuarios
+//Registro de Usuarios
 	var user = await new Promise((resolve, reject) => {
 		connection.query(sql, (err,data,fields) => {
 		if(err) return reject(err)

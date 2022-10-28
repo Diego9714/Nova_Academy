@@ -24,6 +24,7 @@ app.use(session({
 
 // WebSockets
 const socket = require("socket.io")
+const { rejects } = require("assert")
 
 //Middlewares
 app.set("views",path.join(__dirname,"../views"))
@@ -52,11 +53,14 @@ app.get(process.env.GUEST_PATH , (req,res)=>{
 
 app.get(process.env.HOME_PATH , (req,res)=>{
     res.render("inicio.ejs")
-
 })
 
 app.get(process.env.COURSES_PATH , (req,res)=>{
     res.render("cursos.ejs")
+})
+
+app.get(process.env.ENTERTAINMENT_PATH , (req,res)=>{
+    res.render("entretenimiento.ejs")
 })
 
 app.get(process.env.CONTACT_PATH , (req,res)=>{
@@ -92,7 +96,7 @@ app.get("/save" , (req,res)=>{
     res.render("/save")
 })
 
-app.post("/registro" , async(req,res)=>{
+app.post("/registro" ,(req,res)=>{
     const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
     if(password !== confirmPassword){
         res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
@@ -106,7 +110,7 @@ app.post("/registro" , async(req,res)=>{
             nombre : nombre,
             correo : email,
             clave  : password,
-            niv_acc : "Usuario"
+            acceso : "Usuario"
         }
         jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
             if(err) throw err
@@ -139,11 +143,9 @@ app.post("/login",async(req,res)=>{
 
 
     if(user){
-        connection.query(sql,(err,data,fields)=>{
             const payload = {
-                nombre : data[0].nombre,
                 correo : email,
-                niv_acc : "Usuario"
+                acceso : "Usuario"
             }
             jwt.sign(payload, process.env.KEY , {algorithm:"HS256" , expiresIn : 86400} , (err,token)=>{
                 if(err) throw err
@@ -154,16 +156,24 @@ app.post("/login",async(req,res)=>{
                         res.redirect("/verify")                 
                 })
             })
-        })    
     }
 })
 
-app.get("/verify",async(req,res)=>{
-    const sql = `SELECT * FROM login;`
-    await connection.query(sql,(err,data,fields)=>{
-        res.send(data[0].token)    
-    })
+app.get("/verify",(req,res)=>{
+        const sql = `SELECT * FROM iniciarSesion;`
+        connection.query(sql,(err,data,fields)=>{
+            if(err) throw err
+            jwt.verify(data[0].token,process.env.KEY,(err,decoded)=>{
+                if(decoded.niv_acc == "Usuario"){
+                    res.redirect("/miCuenta")
+                }
+                if(decoded.niv_acc == "Administrador"){
+                    res.redirect("/admin")
+                }
+            })
+            })
 })
+
 
 app.get("/miCuenta",async(req,res)=>{
     const sql = `SELECT * FROM registro;`

@@ -1,0 +1,68 @@
+<%- include("head.ejs") %> 
+<body id="bodyRegistro">
+    <!-- Menu de Navegacion -->
+    <header class="header">
+      <div id="logo">
+          <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+      </div>
+      <nav class="nav-menu">
+
+          <input type="checkbox" id="check">
+          <label for="check" class="checkbtn">
+              <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
+          </label>
+
+          <ul>
+              <li class="element-nav"><a href="/inicio">Inicio</a></li>
+              <li class="element-nav"><a href="/cursos">Cursos</a></li>
+              <li class="element-nav"><a href="/contacto">Contacto</a></li>
+              <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+          </ul>
+          
+      </nav>
+  </header>
+  <!-- Registro -->
+  <div class="containerRegistro">
+   <div class="title">Actualizar Datos</div>
+   <div class="contentRegistro">
+     <form method="post" action="/update/admin" >
+       <div class="user-details">
+         <div class="input-box">
+           <span class="details">Nombre</span>
+           <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Apellido</span>
+           <input type="text" name="apellido" placeholder="Escribe tu apellido" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Email</span>
+           <input type="email" name="email" id="emailReg" placeholder="Escribe tu correo" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Número de teléfono</span>
+           <input type="tel" name="telefono" placeholder="Escribe tu número de teléfono" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Contraseña</span>
+           <input type="password" name="password" id="passReg" placeholder="Escribe tu contraseña" required>
+         </div>
+         <div class="input-box">
+           <span class="details">Confirmar Contraseña</span>
+           <input type="password" name="confirmPassword" id="confirmpassReg" placeholder="Confirma tu contraseña" required>
+         </div>
+       </div>
+       <div class="button">
+         <input type="submit" value="Registrate" id="btnRegister">
+       </div>
+     </form>
+   </div>
+ </div>
+<!-- Footer -->
+<%- include("footer.ejs") %>
+</body>
+<!-- Js -->
+<!-- <script src="Js/registro.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
+</html>

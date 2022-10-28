@@ -11,11 +11,10 @@
                 <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
             </label>
             <ul>
-                <li class="element-nav"><a href="/inicio">Inicio</a></li>
-                <li class="element-nav"><a href="/cursos">Cursos</a></li>
-                <li class="element-nav"><a href="/contacto">Contacto</a></li>
-                <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
-                <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+                <li class="element-nav"><a href="/admin">Usuarios Registrados</a></li>
+                <li class="element-nav"><a href="/adminLogin">Usuarios logueados</a></li>
+                <li class="element-nav"><a href="/adminMensaje">Mensajes Recibidos</a></li>
+                <li class="element-nav"><a href="/admin/estudiantes">Estudiantes</a></li>
             </ul>        
         </nav>
     </header>
@@ -29,7 +28,7 @@
         </div>
         <section id="editarDatos">
             <h1>Edita tus datos</h1>
-            <form>
+            <form method="post" action="/update/admin">
                 <div class="formulario__grupo">
                     <label for="nombre" class="formulario__label">Nombre</label>
                     <input type="text" class="formulario__input" name="nombre" id="" required placeholder="Nombre">
@@ -82,7 +81,7 @@
 
  
         </div>
-
+        <button  class="cerrarSesion"><a href="/">Cerrar Sesión</a></button>
 
     <!-- footer -->
     <%- include("footer.ejs") %>

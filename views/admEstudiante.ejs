@@ -1,0 +1,515 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style:none;
+}
+
+body{
+    background-color: #080808;
+}
+.element-nav , .element-nav a{
+    font-family: 'Roboto', sans-serif;
+    color:#fff;
+}
+#logo img{
+    width:80px;
+    border-radius: 50%;
+}
+#logo img:hover{
+    transition:3s;
+    box-shadow: 5px 5px 10px #4ad295;
+}
+header{
+  background-color: #111;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 2rem;
+}
+.nav-menu ul{
+    display:flex;
+    align-items: center;
+}
+.element-nav{
+    margin-right:1.5rem;
+}
+.nav-menu a:hover{
+    color:#4ad295;
+    transition:.5s;
+}
+
+#iniSesion{
+    background-color:#4ad295;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+}
+
+#iniSesion:hover{
+    background:transparent;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+    transition:1.3s;
+}
+
+#myaccount{
+    background-color:#4ad295;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+}
+
+#myaccount:hover{
+    background:transparent;
+    border:2px solid #4ad295;
+    padding:.25rem .75rem;
+    border-radius: .2rem;
+    transition:1.3s;
+}
+.menu-icon img{
+    color:white;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    transition:.5s;
+}
+.menu-icon, #check{
+    display: none;
+}
+
+#check2,#checkbtn2{
+    display:none;
+}
+@media (max-width:768px){
+    .checkbtn{
+        display: block;
+    }
+    .menu-icon{
+        display: block;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+
+    }
+    .nav-menu ul {
+        display: block;
+        position: fixed;
+        top:70px;
+        left:-100%;
+        background: #222;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+    }
+    .element-nav, #iniSesion{
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .element-nav a:hover{
+        color:#4ad295;
+        transition:1.3s;
+    }
+
+    #myaccount,#iniSesion{
+        padding:2rem;
+        background-color: transparent;
+        border:0;
+    }
+
+    #check:checked ~ ul{
+        left: 0;
+        transition: all 1s;
+    }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Poppins&family=Roboto:wght@500&display=swap');
+
+.pie-pagina{
+    width: 100%;
+    display:inline-block;
+    background-color: #181818;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+
+}
+.pie-pagina .grupo-1 .boxFooter figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxFooter h2 p{
+    text-align: justify;
+}
+
+.boxFooter p{
+    font-family: 'Roboto', sans-serif;
+}
+.pie-pagina .grupo-1 .boxFooter figure img{
+    width: 100px;
+    border-radius: 50%;
+}
+
+#logo2:hover{
+    transition:3s;
+    box-shadow: 5px 5px 10px #4ad295;
+}
+
+.pie-pagina .grupo-1 .boxFooter h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-pagina .grupo-1 .boxFooter p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+.iconos{
+    width:200px;
+    display:flex;
+    justify-content:space-around;
+    margin:auto;
+}
+
+.border-icon{
+    height: 20px;
+    width:20px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    padding:10%;
+    border: solid thin white;
+    border-radius: 50%;
+    font-size:2rem;
+    transition: all .3s ease-in;
+    color:white;
+}
+
+.border-icon:hover{
+    background-color:#4ad295;
+    cursor:pointer;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: aqua;
+}
+.pie-pagina .grupo-2{
+    background-color: rgb(66, 66, 66);
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+
+
+.container_crud{
+    margin:25px;
+    color:white;
+}
+
+.container_crud .content-table{
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 0.9em;
+	min-width: 1000px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 15px #545454;
+}
+
+.container_crud .content-table thead tr{
+	background-color: #4ad295;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+}
+
+.container_crud .content-table thead{
+	font-size: 18px;
+	font-family: dos;
+}
+
+.container_crud .content-table td{
+	padding: 12px 15px;
+}
+
+.container_crud .content-table tbody{
+    color:white;
+}
+
+.container_crud .content-table tbody tr{
+	border-bottom: 1px solid #dddddd;
+}
+
+.container_crud .content-table tbody tr:last-of-type{
+	border-bottom: 2px solid #000;
+}
+
+.container_crud .content-table td i{
+	color: #fff;
+}
+
+.container_crud .content-table .btn-us{
+	background: #4ad295;
+	border: none;
+	border-radius: 0.31em;
+	padding: 0.4em 1.8em;
+	margin-right: 1.25em;
+	cursor: pointer;
+	transition: .3s ease all;
+	font-size: 1.12em;
+	margin: auto;
+}
+
+.container_crud .content-table .btn-us a{
+	color: #000;
+}
+
+.container_crud form .mb-3 input{
+	border: #545454;
+}
+
+/* PERFIL */
+
+.portadaPerfil{
+    font-size: 15px;
+    min-width:40.62rem;
+    height:250px;
+    color:#fff;
+    background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)), url(../Imagenes/fondo1.jpg);
+    background-position:center center;
+    background-size:cover ;
+    margin-bottom: 2.12rem;
+    display:flex;
+    align-items: center;
+}
+.contentCuenta{
+    margin: 0 auto;
+    padding-bottom: 4.253rem;
+}
+#nombreUser{
+    font-weight: 300;
+    font-size:3.12em;
+    font-family: 'Alkalami', serif;
+    text-align: justify;
+    margin-top:1.4em;
+    margin-bottom:-0.2em;
+}
+.btnPerfil{
+    background: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.93em 0.87em;
+    color: #fff;
+    margin-left: 5.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em
+}
+#btnEditarDatos2{
+    display:none;
+}
+.btnPerfil:hover{
+    background-color:#fff;
+    color:#1d1d1d;
+}
+
+/* Editar Datos Usuario */
+
+#editarDatos{
+    background-color: #d4d4d4;
+    margin:2%;
+    padding:10px;
+    border-radius:5px;
+    display:none;
+}
+
+#editarDatos form{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.formulario__label{
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.formulario__input {
+	width: 100%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formulario__input:focus {
+	border: 3px solid #4ad295;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formulario__btn {
+	height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formulario__grupo{
+    position:relative;
+}
+
+.cerrarSesion{
+    background: #4ad295;
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.4em 1.8em;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.cerrarSesion a{
+    color: white;
+}
+</style>
+<body>
+    <header class="header">
+        <div id="logo">
+            <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+        </div>
+        
+        <nav class="nav-menu">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
+            </label>
+            <ul>
+                <li class="element-nav"><a href="/admin">Usuarios Registrados</a></li>
+                <li class="element-nav"><a href="/adminLogin">Usuarios logueados</a></li>
+                <li class="element-nav"><a href="/adminMensaje">Mensajes Recibidos</a></li>
+                <li class="element-nav"><a href="/admin/estudiantes">Estudiantes</a></li>
+            </ul>        
+        </nav>
+    </header>
+    <main>
+        <div class="portadaPerfil">
+            <div class="contentCuenta">
+                <h1 id="nombreUser">Diego Cabrera</h1>
+                <button id="btnEditarDatos1" onclick="mostrarForm()" class="btnPerfil">Editar Perfil</button>
+                <button id="btnEditarDatos2" onclick="ocultarForm()" class="btnPerfil">Editar Perfil</button>
+            </div>
+        </div>
+        <section id="editarDatos">
+            <h1>Edita tus datos</h1>
+            <form>
+                <div class="formulario__grupo">
+                    <label for="nombre" class="formulario__label">Nombre</label>
+                    <input type="text" class="formulario__input" name="nombre" id="" required placeholder="Nombre">
+                </div>
+                    
+                <div class="formulario__grupo">
+                    <label for="apellido" class="formulario__label">Apellido</label>
+                    <input type="text" class="formulario__input" name="apellido" id="" required placeholder="Apellidos">
+                </div>
+                <div class="formulario__grupo">
+                    <label for="telefono" class="formulario__label">Teléfono</label>
+                    <input type="tel" class="formulario__input" name="telefono" id="" required placeholder="Teléfono">
+                </div>
+                <div class="formulario__grupo">
+                    <label for="correo" class="formulario__label">Correo</label>
+                    <input type="email" class="formulario__input" name="correo" id="" required placeholder="Correo">
+                </div>
+                <div class="formulario__grupo">
+                    <label for="clave" class="formulario__label">Contraseña</label>
+                    <input type="password" class="formulario__input" name="clave" id="" required placeholder="Contraseña">
+                </div>
+                <div class="formulario__grupo">
+                    <label for="confirmClave" class="formulario__label">Confirmar Contraseña</label>
+                    <input type="password" class="formulario__input" name="confirmClave" id="" required placeholder="Confirmar Contraseña">
+                </div>
+                <button type="submit" class="formulario__btn">Guardar</button>
+            </form>
+        </section>
+        
+        <!-- Tabla de usuarios logueados -->
+        <div class="container_crud">
+            <h1>Control de Estudiantes</h1>
+            <table class="content-table">
+                <thead>
+                    <th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Curso a Estudiar</th>
+                    <th scope="col">Fecha</th>
+                </thead>
+                <tbody>
+						<% estudiante.forEach((info) => { %> 
+						<tr class="text-white">
+							<td><%= info.id %> </td>
+							<td><%= info.nombre %></td>
+                            <td><%= info.curso %></td>
+							<td><%= info.fecha_registro %></td>
+						</tr>
+						<% }) %> 
+					</tbody>
+            </table>
+        </div>
+
+ 
+        </div>
+
+
+    <!-- footer -->
+    <%- include("footer.ejs") %>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
+</html>

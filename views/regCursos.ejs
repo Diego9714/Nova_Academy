@@ -330,74 +330,243 @@ header{
         transition: all 1s;
     }
 }
+
+
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+#containerForm{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../Imagenes/portadalogin.jpg);
+    column-gap: 30px;
+}
+.form{
+    position: absolute;
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #FFF;
+}
+.form.signup{
+    opacity: 0;
+    pointer-events: none;
+}
+.forms.show-signup .form.signup{
+    opacity: 1;
+    pointer-events: auto;
+}
+.forms.show-signup .form.login{
+    opacity: 0;
+    pointer-events: none;
+}
+#tituloLogin{
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
+form{
+    margin-top: 30px;
+}
+.form .field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+.field input,
+.field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+.field input{
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+.field input:focus{
+    border-bottom-width: 2px;
+}
+.eye-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+.field .button{
+    color: #fff;
+    background-color: #42d17e;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.field .button:hover{
+    background:transparent;
+    border:2px solid #4ad295;
+    color:#42d17e;
+}
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+.form a{
+    color: #0171d3;
+    text-decoration: none;
+}
+.form-content a:hover{
+    text-decoration: underline;
+}
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+.line::before{
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+.media-options a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a.facebook{
+    color: #fff;
+    background-color: #4267b2;
+}
+a.facebook .facebook-icon{
+    height: 28px;
+    width: 28px;
+    color: #0171d3;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+.facebook-icon,
+img.google-img{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+img.google-img{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+}
+a.google{
+    border: 1px solid #CACACA;
+}
+a.google span{
+    font-weight: 500;
+    opacity: 0.6;
+    color: #232836;
+}
+
+@media screen and (max-width: 400px) {
+    .form{
+        padding: 20px 10px;
+    }
+    
+}
 </style>
 
-
-<body id="bodyRegistro">
-    <!-- Menu de Navegacion -->
-    <header class="header">
+<body id="bodyLogin">
+<!-- Menu de Navegacion -->
+<header class="header">
       <div id="logo">
           <a href="/inicio"><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
       </div>
       <nav class="nav-menu">
 
-          <input type="checkbox" id="check">
-          <label for="check" class="checkbtn">
+          <input type="checkbox" id="check"  >
+          <label for="check" class="checkbtn"  id="checkbtn1" onclick="mostrarMenu()">
               <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
           </label>
 
-          <ul>
+          <input type="checkbox" id="check2"  >
+          <label for="check" class="checkbtn"  id="checkbtn2" onclick="ocultarMenu()">
+              <i class="menu-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAExJREFUSEtjZKAxYKSx+QyjFhAM4QEJov8EnYVfAYqjsfmA5hZQ6AFU7QMSBzT3Ac3jgOYW0DyIhr4FNI8Dmlsw9ONg1AcoIUDz0hQAbegGGXzv/l0AAAAASUVORK5CYII="/></i>
+          </label>
+
+          <ul id="cerrar-menu">
               <li class="element-nav"><a href="/inicio">Inicio</a></li>
               <li class="element-nav"><a href="/cursos">Cursos</a></li>
               <li class="element-nav"><a href="/contacto">Contacto</a></li>
-              <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
               <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+
           </ul>
           
       </nav>
-  </header>
-  <!-- Registro -->
-  <div class="containerRegistro">
-   <div class="title">Editar Datos</div>
-   <div class="contentRegistro">
-     <form method="post" action="/update" >
-       <div class="user-details">
-         <div class="input-box">
-           <span class="details">Nombre</span>
-           <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+</header>
+   
+<!-- Formulario de Registro -->
+<main>
+<section id="containerForm">
+         <div id="login" class="form login">
+             <div class="form-content">
+                 <h1 id="tituloLogin">Curso que Deseas Estudiar</h1>
+                 <form method="post" action="/registro/curso">
+                     <div class="field input-field">
+                         <input type="text" name="nombre" placeholder="Nombre" class="input">
+                     </div>
+
+                     <div class="field input-field">
+                         <input type="text" name="curso" placeholder="Curso" class="input">
+                         <i class='bx bx-hide eye-icon'></i>
+                     </div>
+
+                     <div class="field button-field">
+                         <input class="button" type="submit" value="Iniciar" id="btnIniciar">
+                     </div>
+                 </form>
+             </div>
+
+
+         
          </div>
-         <div class="input-box">
-           <span class="details">Apellido</span>
-           <input type="text" name="apellido" placeholder="Escribe tu apellido" required>
-         </div>
-         <div class="input-box">
-           <span class="details">Email</span>
-           <input type="email" name="email" id="emailReg" placeholder="Escribe tu correo" required>
-         </div>
-         <div class="input-box">
-           <span class="details">Número de teléfono</span>
-           <input type="tel" name="telefono" placeholder="Escribe tu número de teléfono" required>
-         </div>
-         <div class="input-box">
-           <span class="details">Contraseña</span>
-           <input type="password" name="password" id="passReg" placeholder="Escribe tu contraseña" required>
-         </div>
-         <div class="input-box">
-           <span class="details">Confirmar Contraseña</span>
-           <input type="password" name="confirmPassword" id="confirmpassReg" placeholder="Confirma tu contraseña" required>
-         </div>
-       </div>
-       <div class="button">
-         <input type="submit" value="Registrate" id="btnRegister">
-       </div>
-     </form>
-   </div>
- </div>
-<!-- Footer -->
+</section>
+</main>
+
 <%- include("footer.ejs") %>
 </body>
-<!-- Js -->
-<!-- <script src="Js/registro.js"></script> -->
+<!-- <script src="Js/login.js"></script> -->
 <script src="/socket.io/socket.io.js"></script>
 <script src="Js/conexion.js"></script>
 </html>

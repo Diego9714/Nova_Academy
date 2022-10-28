@@ -30,7 +30,7 @@
         </div>
         <section id="editarDatos">
             <h1>Edita tus datos</h1>
-            <form>
+            <form method="post" action="/update/user">
                 <div class="formulario__grupo">
                     <label for="nombre" class="formulario__label">Nombre</label>
                     <input type="text" class="formulario__input" name="nombre" id="" required placeholder="Nombre">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="formulario__grupo">
                     <label for="correo" class="formulario__label">Correo</label>
-                    <input type="email" class="formulario__input" name="correo" id="" required placeholder="Correo">
+                    <input type="email" class="formulario__input" name="email" id="" required placeholder="Correo">
                 </div>
                 <div class="formulario__grupo">
                     <label for="clave" class="formulario__label">Contraseña</label>
@@ -64,14 +64,15 @@
             <div class="box" href="/cursos">
                     <img class="icon" src="Imagenes/telefono-inteligente.png">
                 <h2 class="title-post">Desde Casa</h2>
-                <p class="description">Disfruta cualquiera de nuestros cursos online. Puedes presionar aqui para acceder a nuestros cursos.</p>
+                <p class="description">Disfruta cualquiera de nuestros cursos online. Puedes ir a nuestra pestaña de cursos para acceder a ellos.</p>
             </div>
             <div class="box" href="/contacto">
                     <img class="icon" src="Imagenes/casa.png">
                 <h2 class="title-post">Soporte 24h</h2>
-                <p class="description">Si necesitas ayuda o quieres reportar algun inconveniente por favor pulsa este cuadro.</p>
+                <p class="description">Si necesitas ayuda o quieres reportar algun inconveniente por favor dirigete a la pestaña de contacto y escribenos.</p>
             </div>
         </div>
+        <button  class="cerrarSesion"><a href="/">Cerrar Sesión</a></button>
     </main>
     <!-- footer -->
     <%- include("footer.ejs") %>

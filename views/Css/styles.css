@@ -543,3 +543,20 @@ body{
 .formulario__grupo{
     position:relative;
 }
+
+.cerrarSesion{
+    background: #4ad295;
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.4em 1.8em;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.cerrarSesion a{
+    color: white;
+}

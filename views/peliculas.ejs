@@ -1,0 +1,40 @@
+<%- include("head.ejs") %>
+ <body id="peliculas">
+    <!-- Menu de Navegacion -->
+<header class="header">
+        <div id="logo">
+            <a><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+        </div>
+        <nav class="nav-menu">
+
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
+            </label>
+
+            <ul>
+                <li class="element-nav"><a href="/inicio">Inicio</a></li>
+                <li class="element-nav"><a href="/cursos">Cursos</a></li>
+                <li class="element-nav"><a href="/peliculas">Peliculas</a></li>
+                <li class="element-nav"><a href="/contacto">Contacto</a></li>
+                <li class="element-nav" id="myaccount"><a href="/micuenta">Mi Cuenta</a></li>
+            </ul>
+            
+        </nav>
+</header>
+<main>
+    <div class="contenedor" id="contenedor"></div>
+
+	<div class="paginacion">
+		<button id="btnAnterior">Anterior</button>
+		<button id="btnSiguiente">Siguiente</button>
+	</div>
+
+</main>
+<!-- Footer -->
+<%- include("footer.ejs") %>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="Js/conexion.js"></script>
+<script src="Js/api.js"></script>
+</html>

@@ -15,13 +15,6 @@ const fetch         = require("node-fetch")
 const jwt           = require("jsonwebtoken")
 const session       = require("express-session")
 
-// Sesion
-app.use(session({
-    secret:"123456",
-    resave:true,
-    saveUninitialized:true
-}))
-
 // WebSockets
 const socket = require("socket.io")
 const { rejects } = require("assert")
@@ -63,8 +56,8 @@ app.get(process.env.REG_CURSOS_PATH , (req,res)=>{
     res.render("regCursos.ejs")
 })
 
-app.get(process.env.ENTERTAINMENT_PATH , (req,res)=>{
-    res.render("entretenimiento.ejs")
+app.get(process.env.PELICULAS_PATH , (req,res)=>{
+    res.render("peliculas.ejs")
 })
 
 app.get(process.env.CONTACT_PATH , (req,res)=>{
@@ -91,17 +84,22 @@ app.get(process.env.ERROR_ACCESS_PATH , (req,res)=>{
     res.render("errorAccess.ejs")
 })
 
-app.get(process.env.ERROR_404_PATH , (req,res)=>{
-    res.render("error404.ejs")
+app.get(process.env.ERROR_CLAVE_CORTA_PATH , (req,res)=>{
+    res.render("claveCorta.ejs")
 })
+
+app.get(process.env.ERROR_NO_COINCIDE_PATH , (req,res)=>{
+    res.render("claveNoCoincide.ejs")
+})
+
 
 app.post("/registro" ,(req,res)=>{
     const {nombre,apellido,email,telefono,password,confirmPassword} = req.body
     if(password !== confirmPassword){
-        res.send("Las contraseñas no coinciden"+"<a href='/registro'>Regresar</a>")
+        res.redirect("/error/clave/corta")
     }
     if(password.length<10){
-        res.send("La contraseña es muy corta, debe ser mayor a 10 digitos")
+        res.redirect("/error/clave/no/coinciden")
     }
     else if(password == confirmPassword){
 
@@ -161,7 +159,9 @@ app.post("/login",async(req,res)=>{
 app.get("/verify",(req,res)=>{
         const sql = `SELECT * FROM iniciarSesion;`
         connection.query(sql,(err,data,fields)=>{
-            if(err) throw err
+            if(err){
+                res.redirect("/error")
+            }
             jwt.verify(data[0].token,process.env.KEY,(err,decoded)=>{
                 if(decoded.acceso == "Usuario"){
                     res.redirect("/miCuenta")

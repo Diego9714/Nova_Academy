@@ -25,7 +25,8 @@ CREATE TABLE iniciarSesion(
 	correo VARCHAR(50) NOT NULL,
     token VARCHAR(500),
 	fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
-	PRIMARY KEY(id)
+	PRIMARY KEY(id),
+    FOREIGN KEY(correo) REFERENCES registro(correo)
 );
 
 DROP TABLE IF EXISTS cursos;

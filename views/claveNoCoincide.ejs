@@ -420,96 +420,115 @@ header{
 .cerrarSesion a{
     color: white;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#body-error {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Imagenes/portadalogin.jpg);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.wrapper h1 {
+    font-size: 5rem;
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+}
+
+#mensaje404{
+    font-size: 9rem;
+}
+
+.wrapper p {
+    color: white;
+    font-size: 15px;
+    width: 500px;
+}
+
+.wrapper .buttons .btn {
+    background: transparent;
+    padding: 15px;
+    font-size: 15px;
+    border: 1px solid royalblue;
+    color: royalblue;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: 130px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.wrapper .buttons .btn1 {
+    background: royalblue;
+    color: white;
+}
+
+.btn a{
+    color: white;
+}
+
+.wrapper .buttons .btn1:hover {
+    background: transparent;
+    color: royalblue;
+}
+
+.wrapper .buttons .btn2:hover {
+    background: royalblue;
+    color: white;
+}
 </style>
-<body>
-    <header class="header">
-        <div id="logo">
-            <a ><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
-        </div>
+<body id="body-error">
+        <!-- Menu de Navegacion -->
+<header class="header">
+    <div id="logo">
+        <a><img src="Imagenes/undraw_programming_re_kg9v.svg"></a>
+    </div>
+    <nav class="nav-menu">
+
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
+        </label>
+
+        <ul>
+            <li class="element-nav"><a href="/inicioGuest">Inicio</a></li>
+            <li class="element-nav"><a href="/errorAccess">Cursos</a></li>
+            <li class="element-nav"><a href="/errorAccess">Contacto</a></li>
+            <li class="element-nav" id="iniSesion"><a href="/login">Iniciar Sesión</a></li>
+        </ul>
         
-        <nav class="nav-menu">
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="menu-icon"><img src="Imagenes/menu.png"/></i>
-            </label>
-            <ul>
-                <li class="element-nav"><a href="/admin">Usuarios Registrados</a></li>
-                <li class="element-nav"><a href="/adminLogin">Usuarios logueados</a></li>
-                <li class="element-nav"><a href="/adminMensaje">Mensajes Recibidos</a></li>
-                <li class="element-nav"><a href="/admin/estudiantes">Estudiantes</a></li>
-            </ul>        
-        </nav>
-    </header>
-    <main>
-        <div class="portadaPerfil">
-            <div class="contentCuenta">
-                <h1 id="nombreUser">Diego Cabrera</h1>
-                <button id="btnEditarDatos1" onclick="mostrarForm()" class="btnPerfil">Editar Perfil</button>
-                <button id="btnEditarDatos2" onclick="ocultarForm()" class="btnPerfil">Editar Perfil</button>
-            </div>
+    </nav>
+</header>
+    <div class="wrapper">
+        <h1>Las contraseñas no coinciden</h1>
+        <p>Por favor dirigete a nuestro formulario de registro y vuelve a intentarlo.</p>
+        <div class="buttons">
+            <button class="btn btn2"><a href="/registro">Regresar</a></button>
         </div>
-        <section id="editarDatos">
-            <h1>Edita tus datos</h1>
-            <form>
-                <div class="formulario__grupo">
-                    <label for="nombre" class="formulario__label">Nombre</label>
-                    <input type="text" class="formulario__input" name="nombre" id="" required placeholder="Nombre">
-                </div>
-                    
-                <div class="formulario__grupo">
-                    <label for="apellido" class="formulario__label">Apellido</label>
-                    <input type="text" class="formulario__input" name="apellido" id="" required placeholder="Apellidos">
-                </div>
-                <div class="formulario__grupo">
-                    <label for="telefono" class="formulario__label">Teléfono</label>
-                    <input type="tel" class="formulario__input" name="telefono" id="" required placeholder="Teléfono">
-                </div>
-                <div class="formulario__grupo">
-                    <label for="correo" class="formulario__label">Correo</label>
-                    <input type="email" class="formulario__input" name="correo" id="" required placeholder="Correo">
-                </div>
-                <div class="formulario__grupo">
-                    <label for="clave" class="formulario__label">Contraseña</label>
-                    <input type="password" class="formulario__input" name="clave" id="" required placeholder="Contraseña">
-                </div>
-                <div class="formulario__grupo">
-                    <label for="confirmClave" class="formulario__label">Confirmar Contraseña</label>
-                    <input type="password" class="formulario__input" name="confirmClave" id="" required placeholder="Confirmar Contraseña">
-                </div>
-                <button type="submit" class="formulario__btn">Guardar</button>
-            </form>
-        </section>
-        
-        <!-- Tabla de usuarios logueados -->
-        <div class="container_crud">
-            <h1>Control de Estudiantes</h1>
-            <table class="content-table">
-                <thead>
-                    <th scope="col">Id</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Curso a Estudiar</th>
-                    <th scope="col">Fecha</th>
-                </thead>
-                <tbody>
-						<% estudiante.forEach((info) => { %> 
-						<tr class="text-white">
-							<td><%= info.id %> </td>
-							<td><%= info.nombre %></td>
-                            <td><%= info.curso %></td>
-							<td><%= info.fecha_registro %></td>
-						</tr>
-						<% }) %> 
-					</tbody>
-            </table>
-        </div>
-
- 
-        </div>
-
-
-    <!-- footer -->
-    <%- include("footer.ejs") %>
+    </div>
 </body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="Js/conexion.js"></script>
+<%- include("footer.ejs") %>
 </html>
